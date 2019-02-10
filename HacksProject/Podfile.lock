@@ -1,0 +1,49 @@
+PODS:
+  - Alamofire (4.8.1)
+  - QRCode (2.0)
+  - RxAlamofire (4.3.0):
+    - RxAlamofire/Core (= 4.3.0)
+  - RxAlamofire/Core (4.3.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4)
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+  - SnapKit (4.2.0)
+  - SwiftHash (2.0.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - QRCode
+  - RxAlamofire
+  - RxCocoa
+  - RxSwift
+  - SnapKit
+  - SwiftHash
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - QRCode
+    - RxAlamofire
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+    - SwiftHash
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
+  RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftHash: 6d312abe61c8359bdef8d0093642f3a70b1c17ba
+
+PODFILE CHECKSUM: 7e83a3844dd22e3893681999c6f12513836209ef
+
+COCOAPODS: 1.5.2

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UGA Hacks Web App</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Brandon Kim & Jacobus Janse Van Rensburg">
+    <meta name="description" content="Web Portfolio">
+    <meta name="keywords" content="portfolio, brandon, kim, Java, HTML, Javascript">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+
+    
+    <!--
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+    <link rel="shortcut icon" type="image/png" href="images/icon.png">
+    <link rel="icon" href="/images/icon.png" type="image/png">
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="home.html">Payment Senpai</a>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Sign out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="col-lg self-align-center">
+            <nav class="navbar navbar-inverse">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/home.html">Register Vendor</a>
+                    <li class="page-item active"><a class="page-link" href='/viewVendors.html'>View Vendors</a></li>
+                    <li class="page-item"><a class="page-link" href='regCust.html'>Register Customer</a></li>
+                    <li class="page-item"><a class="page-link" href='/viewCust.html'>View Customers</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div id="report-table">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Total Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+    </div>
+
+</body>
+
+<script src="static/js/md5.min.js"></script>
+
+<script src="static/js/populateVendors.js"></script>
+
+</html>

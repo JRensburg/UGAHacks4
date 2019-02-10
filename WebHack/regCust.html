@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UGA Hacks Web App</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Brandon Kim & Jacobus Janse Van Rensburg">
+    <meta name="description" content="Web Portfolio">
+    <meta name="keywords" content="portfolio, brandon, kim, Java, HTML, Javascript">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!--
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+    
+    <link rel="shortcut icon" type="image/png" href="images/icon.png">
+    <link rel="icon" href="/images/icon.png" type="image/png">
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="home.html">Payment Senpai</a>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Sign out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="col-lg self-align-center">
+            <nav class="navbar navbar-inverse">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/home.html">Register Vendor</a>
+                    <li class="page-item"><a class="page-link" href='/viewVendors.html'>View Vendors</a></li>
+                    <li class="page-item active"><a class="page-link" href='regCust.html'>Register Customer</a></li>
+                    <li class="page-item"><a class="page-link" href='/viewCust.html'>View Customers</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-lg self-align-center">
+                <p id="message" class="text-danger"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg self-align-center">
+                <form method="post" id="customer-form">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="address" class="form-control" id="first-name" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="address" class="form-control" id="last-name" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="e-mail">Email</label>
+                        <input type="email" class="form-control" id="e-mail" placeholder="i.e., someone@gmail.com"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-1">Phone 1</label>
+                        <input type="text" class="form-control" id="phone-1" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address-1">Address line 1:</label>
+                        <input type="address" class="form-control" id="address-1" placeholder="Street address, P.O. box, company name, c/o"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address-2">Address line 2:</label>
+                        <input type="address" class="form-control" id="address-2" placeholder="Apartment, suite, unit, building, floor, etc."
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="address" class="form-control" id="city" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <input type="address" class="form-control" id="state" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">ZIP:</label>
+                        <input type="address" class="form-control" id="zip" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="acct-number">Account Number</label>
+                        <input type="text" class="form-control" id="acct-number" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="acct-type">Account Type</label>
+                        <input type="text" class="form-control" id="acct-type" placeholder="Checking, Savings, MMA Checking, etc."
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rtn">Routing Number</label>
+                        <input type="text" class="form-control" id="rtn" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="request-id">Request ID</label>
+                        <input type="text" class="form-control" id="request-id" placeholder="Unique character sequence"
+                            required>
+                    </div>
+                    <div class="form-group col-mid-4">
+                        <label for="mode">Mode</label>
+                        <select id="mode" class="form-conrol">
+                            <option value="initiate">Initiate</option>
+                            <option value="verify">Verify</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-mid-4">
+                        <label for="version">Version</label>
+                        <select id="version" class="form-conrol">
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+
+
+                    <button type="button" class="btn btn-secondary" onclick=createCustomer()>Add Customer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="static/js/md5.min.js"></script>
+
+<!--<script src="static/js/customerForm.js"></script>-->
+<script>
+    function createCustomer() {
+        var v = document.getElementById("customer-form");
+        var fname = v.elements[0].value;
+        var lname = v.elements[1].value;
+        var email = v.elements[2].value;
+        var phoneNumber = v.elements[3].value;
+        var address1 = v.elements[4].value;
+        var address2 = v.elements[5].value;
+        var city = v.elements[6].value;
+        var state = v.elements[7].value;
+        var zip = v.elements[8].value;
+        var accountNumber = v.elements[9].value;
+        var accountType = v.elements[10].value;
+        var routingNumber = v.elements[11].value;
+        var requestID = v.elements[12].value;
+        var mode = v.elements[13].value;
+        var version = v.elements[14].value;
+
+        var jsonData = {
+            "address": {
+                "city": city,
+                "line1": address1,
+                "line2": address2,
+                "state": state,
+                "zip": zip
+            },
+            "email": email,
+            "fundingAccount": {
+                "ddaAccount": {
+                    "accountNumber": accountNumber,
+                    "accountType": accountType,
+                    "rtn": routingNumber
+                },
+            },
+            "mode": mode,
+            "personName": {
+                "firstName": fname,
+                "lastName": lname
+            },
+            "phone1": phoneNumber,
+            "requestID": requestID,
+            "version": version
+        }
+
+        // airtable url & key
+        // var api_url = "https://api.airtable.com/v0/appqYJalnUjUgXQfy/Vendors";
+        //  var key = 'keyGahK21OkwKGoI8';
+
+        var api_url = "https://certwebservices.ft.cashedge.com/sdk/Payments/Customers";
+        var key =
+            'prod-b43dbcb90ef2c1c27419794db88841ece591c40cbcde9379d0c3bdea38af5b16f0a671e4a4aa2f2060e42e4de5bc3230e893e201fe5b2d310289a0818906c940';
+        var bID = 'BUSN-acec287bef5f4c40fd62ebcc43b269d8b7b33ba2e358e16a874724bc90f8311f'
+
+        $.ajax({
+            type: "POST",
+            url: api_url,
+
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(jsonData),
+
+            headers: {
+                apiKey: key,
+                businessID: bID,
+                // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+                // dataType: 'json',
+                // data: JSON.stringify(jsonData),
+                //     mode: 'cors' // add this ,
+            },
+
+            success: function (result) {
+                console.log(result);
+               // var m = document.getElementById("message");
+              //  m.innerText = "Customer was successfully registered!";
+
+                console.log(result.customerID);
+                var customerid = result.customerID;
+                var name = fname + " " + lname;
+                addToAirTable(name, customerid, phoneNumber);
+            },
+            error: function (result) {
+                console.log(result);
+                var m = document.getElementById("message");
+                m.innerText = "Error, customer not registered";
+            }
+        })
+
+    }
+
+    function addToAirTable(name, customerID, phoneNumber) {
+
+        var jsonData = {
+            "fields": {
+                "Name": name,
+                "Phone": phoneNumber,
+                "customerid": customerID
+            }
+        }
+
+        var api_url = "https://api.airtable.com/v0/appqYJalnUjUgXQfy/Customers";
+        var key = 'keyGahK21OkwKGoI8';
+
+        $.ajax({
+            type: "POST",
+            url: api_url + "?api_key=" + key,
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(jsonData),
+            success: function (result) {
+                console.log(result);
+                window.location = "regCust.html";
+                window.alert("Customer was successfully registered!");
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        })
+    }
+</script>
+
+</html>
